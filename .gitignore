@@ -416,3 +416,36 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# ── Project-specific ──────────────────────────────────────────
+appsettings.Development.json
+appsettings.Production.json
+wwwroot/uploads/
+
+# ── Flutter ───────────────────────────────────────────────────
+**/build/
+**/.dart_tool/
+**/.packages
+**/.pub-cache/
+**/.pub/
+**/pubspec.lock
+**/*.g.dart
+**/*.freezed.dart
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/generated_plugin_registrant.dart
+
+# Flutter desktop build
+**/windows/flutter/generated_plugin_registrant.cc
+**/windows/flutter/generated_plugin_registrant.h
+**/windows/flutter/generated_plugins.cmake
+
+# Dart/Flutter
+.dart_tool/
+.packages
+.pub/
+
+# IDE
+*.iml
+.idea/
+.claude/
