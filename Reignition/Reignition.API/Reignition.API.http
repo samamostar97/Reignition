@@ -1,0 +1,6 @@
+@Reignition.API_HostAddress = http://localhost:5166
+
+GET {{Reignition.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
