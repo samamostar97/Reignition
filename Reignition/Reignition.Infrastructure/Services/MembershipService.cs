@@ -137,4 +137,16 @@ public class MembershipService
             })
             .ToListAsync();
     }
+
+    public async Task<List<MembershipResponse>> GetMyMembershipsAsync(int userId)
+    {
+        var memberships = await _repository.AsQueryable()
+            .Include(x => x.User)
+            .Include(x => x.MembershipType)
+            .Where(x => x.UserId == userId)
+            .OrderByDescending(x => x.CreatedAt)
+            .ToListAsync();
+
+        return memberships.Adapt<List<MembershipResponse>>();
+    }
 }

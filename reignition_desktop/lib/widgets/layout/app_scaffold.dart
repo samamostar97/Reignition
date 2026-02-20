@@ -6,6 +6,7 @@ import '../../providers/navigation_provider.dart';
 import '../../screens/dashboard_screen.dart';
 import '../../screens/membership_types_screen.dart';
 import '../../screens/memberships_screen.dart';
+import '../../screens/payments_screen.dart';
 import '../../screens/users_screen.dart';
 import 'sidebar.dart';
 
@@ -18,6 +19,8 @@ class AppScaffold extends ConsumerWidget {
         return const MembershipTypesScreen();
       case '/memberships':
         return const MembershipsScreen();
+      case '/payments':
+        return const PaymentsScreen();
       case '/users':
         return const UsersScreen();
       default:
@@ -37,7 +40,8 @@ class AppScaffold extends ConsumerWidget {
         const SingleActivator(LogicalKeyboardKey.digit1, control: true): () => navigate('/dashboard'),
         const SingleActivator(LogicalKeyboardKey.digit2, control: true): () => navigate('/membership-types'),
         const SingleActivator(LogicalKeyboardKey.digit3, control: true): () => navigate('/memberships'),
-        const SingleActivator(LogicalKeyboardKey.digit4, control: true): () => navigate('/users'),
+        const SingleActivator(LogicalKeyboardKey.digit4, control: true): () => navigate('/payments'),
+        const SingleActivator(LogicalKeyboardKey.digit5, control: true): () => navigate('/users'),
       },
       child: Focus(
         autofocus: true,

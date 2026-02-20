@@ -12,10 +12,12 @@ namespace Reignition.API.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;
+    private readonly IMembershipService _membershipService;
 
-    public AuthController(IAuthService authService)
+    public AuthController(IAuthService authService, IMembershipService membershipService)
     {
         _authService = authService;
+        _membershipService = membershipService;
     }
 
     [HttpPost("login")]
@@ -43,5 +45,13 @@ public class AuthController : ControllerBase
         var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
         await _authService.ChangePasswordAsync(userId, request);
         return NoContent();
+    }
+
+    [HttpGet("my-memberships")]
+    [Authorize]
+    public async Task<ActionResult<List<MembershipResponse>>> GetMyMemberships()
+    {
+        var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        return Ok(await _membershipService.GetMyMembershipsAsync(userId));
     }
 }

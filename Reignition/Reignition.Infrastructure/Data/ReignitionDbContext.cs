@@ -19,6 +19,7 @@ public class ReignitionDbContext : DbContext
     public DbSet<User> Users => Set<User>();
     public DbSet<MembershipType> MembershipTypes => Set<MembershipType>();
     public DbSet<Membership> Memberships => Set<Membership>();
+    public DbSet<Payment> Payments => Set<Payment>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

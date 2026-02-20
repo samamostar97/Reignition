@@ -18,6 +18,7 @@ const _sidebarItems = [
   SidebarItem(label: 'Dashboard', icon: LucideIcons.layoutDashboard, route: '/dashboard'),
   SidebarItem(label: 'Tipovi članarina', icon: LucideIcons.tags, route: '/membership-types'),
   SidebarItem(label: 'Članarine', icon: LucideIcons.creditCard, route: '/memberships'),
+  SidebarItem(label: 'Uplate', icon: LucideIcons.wallet, route: '/payments'),
   SidebarItem(label: 'Korisnici', icon: LucideIcons.users, route: '/users'),
 ];
 

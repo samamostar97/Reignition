@@ -196,6 +196,33 @@ public static class SeedService
 
             context.Memberships.AddRange(memberships);
             await context.SaveChangesAsync();
+
+            // Seed payments for each membership
+            var methods = new[] { PaymentMethod.Cash, PaymentMethod.Card, PaymentMethod.BankTransfer };
+            var payments = new List<Payment>();
+
+            foreach (var membership in memberships)
+            {
+                var membershipType = types.First(t => t.Id == membership.MembershipTypeId);
+                payments.Add(new Payment
+                {
+                    UserId = membership.UserId,
+                    MembershipId = membership.Id,
+                    Amount = membershipType.Price,
+                    PaymentMethod = methods[Random.Shared.Next(methods.Length)],
+                    TransactionDate = membership.CreatedAt,
+                    Status = membership.Status == MembershipStatus.Cancelled
+                        ? PaymentStatus.Refunded
+                        : PaymentStatus.Completed,
+                    Note = membership.Status == MembershipStatus.Cancelled
+                        ? "Refundirano zbog otkazivanja."
+                        : null,
+                    CreatedAt = membership.CreatedAt
+                });
+            }
+
+            context.Payments.AddRange(payments);
+            await context.SaveChangesAsync();
         }
     }
 }

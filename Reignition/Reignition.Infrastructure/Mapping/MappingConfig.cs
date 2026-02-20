@@ -14,5 +14,9 @@ public static class MappingConfig
         TypeAdapterConfig<Membership, MembershipResponse>.NewConfig()
             .Map(dest => dest.UserFullName, src => src.User.FirstName + " " + src.User.LastName)
             .Map(dest => dest.MembershipTypeName, src => src.MembershipType.Name);
+
+        TypeAdapterConfig<Payment, PaymentResponse>.NewConfig()
+            .Map(dest => dest.UserFullName, src => src.User.FirstName + " " + src.User.LastName)
+            .Map(dest => dest.MembershipTypeName, src => src.Membership!.MembershipType.Name);
     }
 }

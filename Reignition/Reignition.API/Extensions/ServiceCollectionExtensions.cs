@@ -30,6 +30,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IMembershipTypeService, MembershipTypeService>();
         services.AddScoped<IMembershipService, MembershipService>();
         services.AddScoped<IDashboardService, DashboardService>();
+        services.AddScoped<IPaymentService, PaymentService>();
 
         return services;
     }
